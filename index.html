@@ -18,10 +18,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="img/fotos/loja-interior-recepcao-logo-nova-fase-m.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="img/fotos/look-vestido-off-white-flores-terracota.webp" imagesrcset="img/fotos/look-vestido-off-white-flores-terracota-m.webp 720w, img/fotos/look-vestido-off-white-flores-terracota-l.webp 1080w, img/fotos/look-vestido-off-white-flores-terracota.webp 1600w" imagesizes="(max-width: 860px) 100vw, 50vw" fetchpriority="high">
+  <link rel="stylesheet" href="css/estilo.css?v=2">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ClothingStore","name":"Luiza Rabelo","telephone":"+55 61 98280-9293",
    "address":{"@type":"PostalAddress","streetAddress":"Quadra 8, Área Especial 01","addressLocality":"Sobradinho","addressRegion":"DF","postalCode":"73005-080","addressCountry":"BR"},
@@ -69,10 +69,10 @@
   <!-- HERO -->
   <section class="hero" aria-label="Destaque">
     <figure class="hero-foto hero-foto-a">
-      <img src="img/fotos/look-vestido-off-white-flores-terracota.jpg" alt="Modelo com vestido off-white de flores terracota em frente ao mar" fetchpriority="high">
+      <img src="img/fotos/look-vestido-off-white-flores-terracota.webp" srcset="img/fotos/look-vestido-off-white-flores-terracota-m.webp 720w, img/fotos/look-vestido-off-white-flores-terracota-l.webp 1080w, img/fotos/look-vestido-off-white-flores-terracota.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" width="1350" height="2400" alt="Modelo com vestido off-white de flores terracota em frente ao mar" fetchpriority="high">
     </figure>
     <figure class="hero-foto hero-foto-b">
-      <img src="img/fotos/look-colecao-verao27-bordado-offwhite.jpg" alt="Duas modelos com peças bordadas off-white da Coleção Verão 27">
+      <img loading="lazy" decoding="async" src="img/fotos/look-colecao-verao27-bordado-offwhite.webp" srcset="img/fotos/look-colecao-verao27-bordado-offwhite-m.webp 720w, img/fotos/look-colecao-verao27-bordado-offwhite-l.webp 1080w, img/fotos/look-colecao-verao27-bordado-offwhite.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" width="976" height="1730" alt="Duas modelos com peças bordadas off-white da Coleção Verão 27">
     </figure>
     <div class="hero-txt">
       <p class="sobretitulo">Coleção Verão 27</p>
@@ -104,7 +104,7 @@
   <!-- HISTÓRIA -->
   <section class="historia" id="historia" aria-labelledby="t-historia">
     <figure class="historia-foto">
-      <img src="img/fotos/luiza-retrato-escada-loja.jpg" alt="Luiza Rabelo sentada na escada da loja nova" loading="lazy">
+      <img src="img/fotos/luiza-retrato-escada-loja.webp" srcset="img/fotos/luiza-retrato-escada-loja-m.webp 720w, img/fotos/luiza-retrato-escada-loja.webp 1600w" sizes="(max-width: 860px) 100vw, 40vw" width="1215" height="2160" alt="Luiza Rabelo sentada na escada da loja nova" loading="lazy" decoding="async">
     </figure>
     <div class="historia-txt">
       <p class="sobretitulo">Nossa história</p>
@@ -113,14 +113,14 @@
       <a class="link-linha" href="#loja">Conheça a loja</a>
     </div>
     <figure class="historia-desenho">
-      <img src="img/fotos/36-anos-ilustracao-fachada-antiga.jpg" alt="Ilustração da fachada antiga da Engrenagem Oficina da Moda" loading="lazy">
+      <img src="img/fotos/36-anos-ilustracao-fachada-antiga.webp" srcset="img/fotos/36-anos-ilustracao-fachada-antiga-m.webp 720w, img/fotos/36-anos-ilustracao-fachada-antiga.webp 1600w" sizes="(max-width: 860px) 100vw, 40vw" width="1600" height="2002" alt="Ilustração da fachada antiga da Engrenagem Oficina da Moda" loading="lazy" decoding="async">
     </figure>
   </section>
 
   <!-- A LOJA -->
   <section class="loja" id="loja" aria-labelledby="t-loja">
     <figure class="loja-foto">
-      <img src="img/fotos/loja-interior-salao-sofa-curvo.jpg" alt="Salão da loja nova com sofá curvo e mesa de madeira" loading="lazy">
+      <img src="img/fotos/loja-interior-salao-sofa-curvo.webp" srcset="img/fotos/loja-interior-salao-sofa-curvo.webp 720w" sizes="100vw" width="720" height="1280" alt="Salão da loja nova com sofá curvo e mesa de madeira" loading="lazy" decoding="async">
     </figure>
     <div class="loja-cartao">
       <p class="sobretitulo">A loja</p>
@@ -144,10 +144,10 @@
       <a class="link-linha" href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener">Seguir no Instagram</a>
     </div>
     <div class="insta-grade">
-      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/look-total-white-loja-m.jpg" alt="Look total white dentro da loja" loading="lazy"></a>
-      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/loja-sacolas-embalagens-marca-m.jpg" alt="Sacolas e embalagens da marca" loading="lazy"></a>
-      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/loja-interior-araras-cabides-madeira-m.jpg" alt="Araras com cabides de madeira" loading="lazy"></a>
-      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/loja-fachada-nova-clientes-m.jpg" alt="Clientes em frente à fachada nova" loading="lazy"></a>
+      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/look-total-white-loja-m.webp" srcset="img/fotos/look-total-white-loja-s.webp 400w, img/fotos/look-total-white-loja-m.webp 720w" sizes="(max-width: 600px) 50vw, 25vw" width="1440" height="1920" alt="Look total white dentro da loja" loading="lazy" decoding="async"></a>
+      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/loja-sacolas-embalagens-marca-m.webp" srcset="img/fotos/loja-sacolas-embalagens-marca-s.webp 400w, img/fotos/loja-sacolas-embalagens-marca-m.webp 720w" sizes="(max-width: 600px) 50vw, 25vw" width="720" height="1280" alt="Sacolas e embalagens da marca" loading="lazy" decoding="async"></a>
+      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/loja-interior-araras-cabides-madeira-m.webp" srcset="img/fotos/loja-interior-araras-cabides-madeira-s.webp 400w, img/fotos/loja-interior-araras-cabides-madeira-m.webp 720w" sizes="(max-width: 600px) 50vw, 25vw" width="720" height="1280" alt="Araras com cabides de madeira" loading="lazy" decoding="async"></a>
+      <a href="https://www.instagram.com/luizarabelodf/" target="_blank" rel="noopener"><img src="img/fotos/loja-fachada-nova-clientes-m.webp" srcset="img/fotos/loja-fachada-nova-clientes-s.webp 400w, img/fotos/loja-fachada-nova-clientes-m.webp 720w" sizes="(max-width: 600px) 50vw, 25vw" width="720" height="1280" alt="Clientes em frente à fachada nova" loading="lazy" decoding="async"></a>
     </div>
   </section>
 
@@ -212,7 +212,7 @@
 
 <div class="toast" data-toast role="status" aria-live="polite"></div>
 
-<script src="js/catalogo.js"></script>
-<script src="js/site.js"></script>
+<script src="js/catalogo.js?v=2" defer></script>
+<script src="js/site.js?v=2" defer></script>
 </body>
 </html>

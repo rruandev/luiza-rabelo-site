@@ -18,7 +18,10 @@
     '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="38" r="15"/><path d="M24 24l8-10 8 10M24 24h16M27 24l5 6 5-6"/></svg>';
   const joiaVazia = (txt = "Em breve") => `<div class="joia-vazia">${JOIA_SVG}<span>${txt}</span></div>`;
 
-  const foto = (nome, mobile) => `img/fotos/${nome}${mobile ? "-m" : ""}.jpg`;
+  const foto = (nome, tam) => `img/fotos/${nome}${tam === true ? "-m" : tam ? "-" + tam : ""}.webp`;
+  /* srcset das fotos: -s (400px), -m (720px) e cheia (até 1600px) */
+  const srcGrade = n => `src="${foto(n, "m")}" srcset="${foto(n, "s")} 400w, ${foto(n, "m")} 720w" sizes="(max-width: 600px) 50vw, (max-width: 1100px) 33vw, 25vw"`;
+  const srcCheia = n => `src="${foto(n)}" srcset="${foto(n, "m")} 720w, ${foto(n)} 1600w" sizes="(max-width: 860px) 100vw, 55vw"`;
   const preco = v => (v > 0 ? v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) : "Sob consulta");
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
@@ -80,8 +83,8 @@
   function cartao(p) {
     const f = p.fotos;
     const midia = f.length
-      ? `<img src="${foto(f[0], true)}" alt="${esc(p.nome)}" loading="lazy">` +
-        (f[1] ? `<img class="foto-2" src="${foto(f[1], true)}" alt="" loading="lazy">` : "")
+      ? `<img ${srcGrade(f[0])} alt="${esc(p.nome)}" loading="lazy" decoding="async">` +
+        (f[1] ? `<img class="foto-2" ${srcGrade(f[1])} alt="" loading="lazy" decoding="async">` : "")
       : joiaVazia();
     return `<article class="produto" data-id="${p.id}">
       <div class="produto-midia">
@@ -100,7 +103,7 @@
   if (catBox) {
     catBox.innerHTML = CATS.map(c => `
       <a class="categoria" href="/loja?cat=${c.id}">
-        <div class="categoria-foto">${c.capa ? `<img src="${foto(c.capa, true)}" alt="${c.nome}" loading="lazy">` : joiaVazia("Sob consulta")}</div>
+        <div class="categoria-foto">${c.capa ? `<img ${srcGrade(c.capa)} alt="${c.nome}" loading="lazy" decoding="async">` : joiaVazia("Sob consulta")}</div>
         <span class="categoria-nome">${c.nome}</span>
       </a>`).join("");
     corrigeLinksLocais(catBox);
@@ -209,7 +212,7 @@
     fimEl.hidden = sacola.length === 0;
     itensEl.innerHTML = sacola.map((i, idx) => {
       const p = porId[i.id];
-      const img = p.fotos.length ? `<img src="${foto(p.fotos[0], true)}" alt="">` : joiaVazia();
+      const img = p.fotos.length ? `<img src="${foto(p.fotos[0], "s")}" alt="">` : joiaVazia();
       return `<li class="sacola-item">
         ${img}
         <div>
@@ -275,7 +278,7 @@
     if (!p) return;
     atual = p; tamEscolhido = null; ultimoFoco = document.activeElement;
     $("[data-mp-fotos]", modal).innerHTML = p.fotos.length
-      ? p.fotos.map((f, i) => `<img src="${foto(f)}" alt="${esc(p.nome)}${i ? `, foto ${i + 1}` : ""}">`).join("")
+      ? p.fotos.map((f, i) => `<img ${srcCheia(f)} alt="${esc(p.nome)}${i ? `, foto ${i + 1}` : ""}">`).join("")
       : joiaVazia("Fotos pelo WhatsApp");
     $("[data-mp-cat]", modal).textContent = nomeCat(p.categoria);
     $("[data-mp-nome]", modal).textContent = p.nome;

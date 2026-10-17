@@ -22,3 +22,9 @@ A sacola fica salva no navegador e o botão "Finalizar pelo WhatsApp" envia a li
 ## Pendências
 - Semijoias: sem fotos ainda. A categoria mostra "Peças sob consulta" com botão para o WhatsApp; cadastre as peças em `js/catalogo.js` (modelo comentado no fim do arquivo) e o estado some sozinho.
 - Preços: todos "Sob consulta" até a loja enviar os valores.
+
+## Cache (importante ao editar)
+`css/`, `js/`, `img/` e `fonts/` ficam em cache por 1 ano no navegador (`vercel.json`).
+Ao alterar `estilo.css`, `site.js` ou `catalogo.js`, aumente o número do `?v=` nos links do
+`index.html` e do `loja.html` (ex.: `?v=2` para `?v=3`); senão quem já visitou continua vendo a versão antiga.
+Foto nova: use um nome de arquivo novo, em vez de substituir um arquivo existente.
