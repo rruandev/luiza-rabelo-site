@@ -22,6 +22,20 @@
   const preco = v => (v > 0 ? v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) : "Sob consulta");
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  /* ---------- links limpos (/loja) no site publicado;
+     aberto por duplo clique (file://) volta para index.html / loja.html ---------- */
+  const LOCAL = location.protocol === "file:";
+  const urlLoja = cat => (LOCAL ? "loja.html" : "/loja") + (cat && cat !== "todas" ? `?cat=${cat}` : "");
+  function corrigeLinksLocais(raiz = document) {
+    if (!LOCAL) return;
+    $$("a[href^='/']", raiz).forEach(a => {
+      const h = a.getAttribute("href");
+      if (h.startsWith("//")) return;
+      a.setAttribute("href", h.replace(/^\/loja/, "loja.html").replace(/^\/(#|$)/, "index.html$1"));
+    });
+  }
+  corrigeLinksLocais();
+
   /* ---------- WhatsApp ---------- */
   const linkWhats = msg => `https://wa.me/${CFG.whatsapp}?text=${encodeURIComponent(msg)}`;
   $$("a[data-whats]").forEach(a => { a.href = linkWhats(a.dataset.whats); a.target = "_blank"; a.rel = "noopener"; });
@@ -85,10 +99,11 @@
   const catBox = $("[data-categorias]");
   if (catBox) {
     catBox.innerHTML = CATS.map(c => `
-      <a class="categoria" href="loja.html?cat=${c.id}">
+      <a class="categoria" href="/loja?cat=${c.id}">
         <div class="categoria-foto">${c.capa ? `<img src="${foto(c.capa, true)}" alt="${c.nome}" loading="lazy">` : joiaVazia("Sob consulta")}</div>
         <span class="categoria-nome">${c.nome}</span>
       </a>`).join("");
+    corrigeLinksLocais(catBox);
   }
 
   /* novidades da home */
@@ -150,19 +165,19 @@
       const b = e.target.closest(".filtro");
       if (!b) return;
       cat = b.dataset.cat;
-      history.replaceState(null, "", cat === "todas" ? "loja.html" : `loja.html?cat=${cat}`);
+      history.replaceState(null, "", urlLoja(cat));
       desenha();
     });
     ordenar.addEventListener("change", () => { ordem = ordenar.value; desenha(); });
 
     /* links do menu trocam o filtro sem recarregar */
     $$("#menu a").forEach(a => {
-      const m = a.getAttribute("href").match(/^loja\.html\?cat=([\w-]+)/);
+      const m = a.getAttribute("href").match(/^(?:\/loja|loja\.html)\?cat=([\w-]+)/);
       if (!m) return;
       a.addEventListener("click", e => {
         e.preventDefault();
         cat = m[1];
-        history.replaceState(null, "", `loja.html?cat=${cat}`);
+        history.replaceState(null, "", urlLoja(cat));
         desenha();
         window.scrollTo({ top: 0, behavior: "smooth" });
       });

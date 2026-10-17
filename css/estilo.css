@@ -43,6 +43,7 @@ h1, h2, h3 { font-family: var(--f-titulo); font-weight: 300; color: var(--escuro
 em { font-style: italic; }
 :focus-visible { outline: 2px solid var(--rose-esc); outline-offset: 3px; }
 .hero :focus-visible, .aviso :focus-visible { outline-color: var(--nude); }
+[hidden] { display: none !important; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .cheio { fill: currentColor; stroke: none; }
 
